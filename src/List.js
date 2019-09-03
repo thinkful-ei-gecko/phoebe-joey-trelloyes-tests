@@ -1,5 +1,6 @@
 import React from 'react';
 import Card from './Card';
+import './styles/list.css';
 
 function List(props) {
   console.log(props);
@@ -8,16 +9,14 @@ function List(props) {
   ));
   
   return (
-    <React.Fragment>
-      <section className="list">
-        <header>
-          <h2>{props.header}</h2>
-        </header>
-        <div className="list-cards">
-          {cardElements}
-        </div>
-      </section>
-    </React.Fragment>
+    <section className="List">
+      <header className="List-header">
+        <h2>{props.header}</h2>
+      </header>
+      <div className="List-cards">
+        {cardElements}
+      </div>
+    </section>
   );
 }
 

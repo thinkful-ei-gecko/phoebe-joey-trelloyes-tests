@@ -1,6 +1,6 @@
 import React from 'react';
 import List from './List';
-import './App.css';
+import './styles/App.css';
 
 function App(props) {
   const cardsForIds = function(arr) {
@@ -13,7 +13,7 @@ function App(props) {
 
   return (
     <main className="App">
-      <header>
+      <header className="App-header">
         <h1>Trelloyes!</h1>
       </header>
       <div className="App-list">

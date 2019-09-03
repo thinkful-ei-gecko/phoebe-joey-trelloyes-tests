@@ -1,11 +1,13 @@
 import React from 'react';
+import './styles/card.css';
 
 function Card({title, content}) {
   return (
-    <React.Fragment>
+    <div className="Card">
+      <button type="button">delete</button>
       <h3>{title}</h3>
       <p>{content}</p>
-    </React.Fragment>
+    </div>
   );
 }
 
