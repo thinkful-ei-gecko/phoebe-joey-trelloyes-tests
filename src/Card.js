@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Card(title, content) {
+function Card({title, content}) {
   return (
     <React.Fragment>
       <h3>{title}</h3>
