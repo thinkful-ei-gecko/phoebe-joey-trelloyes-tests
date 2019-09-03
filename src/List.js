@@ -1,16 +1,17 @@
 import React from 'react';
 import Card from './Card';
 
-function List({header, cards}) {
-  const cardElements = cards.map(card => (
-    <Card title={card.title} content={card.content} />
+function List(props) {
+  console.log(props);
+  const cardElements = props.cards.map(card => (
+    <Card key={card.id} title={card.title} content={card.content} />
   ));
   
   return (
     <React.Fragment>
       <section className="list">
         <header>
-          <h2>{header}</h2>
+          <h2>{props.header}</h2>
         </header>
         <div className="list-cards">
           {cardElements}

@@ -2,59 +2,24 @@ import React from 'react';
 import List from './List';
 import './App.css';
 
-function App() {
-  const lists = 
-  [
-   {
-      header: 'List 1',
-      cards: [
-        {
-          id: 1,
-          title: 'Title-1', 
-          content: 'Lorem ipsum'
-        },
-        {
-          id: 2,
-          title: 'Title-2', 
-          content: 'Lorem ipsum'
-        },
-        {
-          id: 3,
-          title: 'Title-3', 
-          content: 'Lorem ipsum'
-        },
-      ],
-    },
-    {
-      header: 'List 2',
-      cards: [
-        {
-          id: 1,
-          title: 'Title-1', 
-          content: 'Lorem ipsum'
-        },
-        {
-          id: 2,
-          title: 'Title-2', 
-          content: 'Lorem ipsum'
-        },
-        {
-          id: 3,
-          title: 'Title-3', 
-          content: 'Lorem ipsum'
-        },
-      ]
-    }
-  ];
-  
-  const listElements = lists.map (list => (
-    <List header={list.header} cards={list.cards} />
+function App(props) {
+  const cardsForIds = function(arr) {
+    return arr.map(id =>  props.store.allCards[id])
+  };
+
+  const listElements = props.store.lists.map (list => (
+    <List key={list.id} header={list.header} cards={cardsForIds(list.cardIds)} />
   ));
 
   return (
-    <div className="App">
-      {listElements}
-    </div>
+    <main className="App">
+      <header>
+        <h1>Trelloyes!</h1>
+      </header>
+      <div className="App-list">
+        {listElements}
+      </div>
+    </main>
   );
 }
 
