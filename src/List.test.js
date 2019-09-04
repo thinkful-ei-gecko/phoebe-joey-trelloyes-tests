@@ -5,8 +5,23 @@ import renderer from 'react-test-renderer';
 
 it('renders without crashing', () => {
     const div = document.createElement('div');
-     const header= 'header'; const cards={ title: 'title', content: 'content'};
-    ReactDOM.render(<List header = {header} cards={cards} />, div);
+     const list = {
+      arr: [
+        {
+          id: '1',
+          header: 'First list',
+          cardIds: [ 'a'],
+        },
+       ],
+       allCards: {
+        'a': { id: 'a', title: 'First card', content: 'lorem ipsum' },
+      }
+    
+     }
+     const cardsForIds = function(arr) {
+      return arr.map(id =>  arr.allCards[id])
+    };
+    ReactDOM.render(<List key = {arr[0].id} title = {arr[0].title} content = {arr[0].content}/>, div);
     ReactDOM.unmountComponentAtNode(div);
   })
 
