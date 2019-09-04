@@ -3,31 +3,26 @@ import ReactDOM from 'react-dom';
 import List from './List';
 import renderer from 'react-test-renderer';
 
-it('renders without crashing', () => {
+describe('test list component', () => {
+  it('should render without crashing', () => {
     const div = document.createElement('div');
-     const list = {
-      arr: [
-        {
-          id: '1',
-          header: 'First list',
-          cardIds: [ 'a'],
-        },
-       ],
-       allCards: {
-        'a': { id: 'a', title: 'First card', content: 'lorem ipsum' },
-      }
-    
-     }
-     const cardsForIds = function(arr) {
-      return arr.map(id =>  arr.allCards[id])
-    };
-    ReactDOM.render(<List key = {arr[0].id} title = {arr[0].title} content = {arr[0].content}/>, div);
+    ReactDOM.render(
+    <List key={2} 
+      header='header string' 
+      cards={[{id: 1, title: 'title 1', content: 'content 1'}]} 
+    />, div);
     ReactDOM.unmountComponentAtNode(div);
-  })
+  });
 
-describe('<Card />', () => {
-    it('renders this UI as expected', () => {
-      const tree = renderer.create(<List />).toJSON();
-      expect(tree).toMatchSnapshot();
-    })
-  })
+  it('should match snapshot', () => {
+    const tree = renderer
+    .create(
+    <List key={2} 
+      header='header string' 
+      cards={[{id: 1, title: 'title 1', content: 'content 1'},
+      {id: 2, title: 'title 2', content: 'content 2'}]} 
+    />)
+    .toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+})
